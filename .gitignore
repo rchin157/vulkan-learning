@@ -33,3 +33,8 @@
 
 # build files
 build/
+.editorconfig
+.vscode
+
+# compiled shader code
+*.spv
