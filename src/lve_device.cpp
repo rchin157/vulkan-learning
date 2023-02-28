@@ -306,12 +306,22 @@ namespace lve
     uint32_t glfwExtensionCount = 0;
     const char **glfwExtensions;
     glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+    const std::vector<const char *> additionalExtensions = {
+        VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME,
+    };
 
-    std::vector<const char *> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+    std::vector<const char *>
+        extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
     if (enableValidationLayers)
     {
       extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+    }
+
+    // additional exts to satisfy validation layer
+    for (auto ext : additionalExtensions)
+    {
+      extensions.push_back(ext);
     }
 
     return extensions;
