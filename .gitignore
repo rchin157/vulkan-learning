@@ -35,6 +35,7 @@
 build/
 .editorconfig
 .vscode
+.env.cmake
 
 # compiled shader code
 *.spv
