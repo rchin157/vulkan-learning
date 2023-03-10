@@ -23,6 +23,12 @@ namespace lve
         }
     };
 
+    struct RigidBody2d
+    {
+        glm::vec2 velocity;
+        float mass{1.0f};
+    };
+
     class LveGameObject
     {
     public:
@@ -47,6 +53,7 @@ namespace lve
         std::shared_ptr<LveModel> model{};
         glm::vec3 color{};
         Transform2dComponent transform2d{};
+        RigidBody2d rigidBody2d{};
 
     private:
         LveGameObject(id_t objId) : id{objId} {}
